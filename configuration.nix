@@ -19,6 +19,10 @@ in {
 		chown ${username}:${group} ${home}/.config/fastfetch/config.jsonc
 		chmod 600 ${home}/.config/fastfetch/config.jsonc
 
+		cp ${./gl.txt} ${home}/.config/fastfetch/gl.txt
+		chown ${username}:${group} ${home}/.config/fastfetch/gl.txt
+		chmod 600 ${home}/.config/fastfetch/gl.txt
+
 	'';
 	
 	environment.systemPackages = with pkgs; [
