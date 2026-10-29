@@ -23,9 +23,14 @@ in {
 		chown ${username}:${group} ${home}/.config/fastfetch/gl.txt
 		chmod 600 ${home}/.config/fastfetch/gl.txt
 
+		cp ${./hyfetch.json} ${home}/.config/hyfetch.json
+		chown ${username}:${group} ${home}/.config/hyfetch.json
+		chmod 600 ${home}/.config/hyfetch.json
+
 	'';
 	
 	environment.systemPackages = with pkgs; [
 		fastfetch
+		hyfetch
 	];
 }
