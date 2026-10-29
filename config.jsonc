@@ -1,34 +1,137 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-  "modules": [
-    "title",
-    "separator",
-    "os",
-    "host",
-    "kernel",
-    "uptime",
-    "packages",
-    "shell",
-    "display",
-    "de",
-    "wm",
-    "wmtheme",
-    "theme",
-    "icons",
-    "font",
-    "cursor",
-    "terminal",
-    "terminalfont",
-    "cpu",
-    "gpu",
-    "memory",
-    "swap",
-    "disk",
-    "localip",
-    "battery",
-    "poweradapter",
-    "locale",
-    "break",
-    "colors"
-  ]
-}
+  "logo": {
+      "source": "~/.config/fastfetch/gl.txt",
+      "type": "file"
+  },
+  "display": {
+      "separator": "",
+      "constants": [
+        // CONSTANT {$1} - COLOR BACKGROUND FOR KEY
+        "\u001b[48;2;43;43;69m",
+        // CONSTANT {$2} - COLOR BACKGROUND FOR OUTPUT
+        "\u001b[48;2;56;59;78m",
+        // CONSTANT {$3} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD
+        "\u001b[90m│                                                            │\u001b[60D\u001b[39m",
+      ]
+    },
+    "modules": [
+      // CUSTOM - Top UI bar
+      {
+        "type": "custom",
+        "key": "{#90}{$1}╭─────────────╮",
+        "format": "{#90}{$2}╭────────────────────────────────────────────────────────────╮",
+      },
+      {
+        "type": "title",
+        "key": "{#90}{$1}│ {#92}User        {#90}│",
+        "format": "{$2}{$3}{user-name}  {#2}[{home-dir}]"
+      },
+      {
+        "type": "users",
+        "key": "{#90}{$1}│ {#92}Users       {#90}│",
+        "myselfOnly": false,
+        "format": "{$2}{$3}{1}@{host-name}{/host-name}localhost{/}{?client-ip}  {#2}[IP:{client-ip}]{?}  [Login time: {login-time}]"
+      },
+      {
+        "type": "datetime",
+        "key": "{#90}{$1}│ {#92}Datetime    {#90}│",
+        "format": "{$2}{$3}{year}-{month-pretty}-{day-in-month} {hour-pretty}:{minute-pretty}:{second-pretty}  [{weekday}] [W{week}] [UTC{offset-from-utc}]"
+      },
+      {
+        "type": "title",
+        "key": "{#90}{$1}│ {#93}Host        {#90}│",
+        "format": "{$2}{$3}{host-name}"
+      },
+      {
+        "type": "os",
+        "key": "{#90}{$1}│ {#93}OS          {#90}│",
+        "format": "{$2}{$3}{?pretty-name}{pretty-name}{?}{/pretty-name}{name}{/} {#2}[v{version}] [{arch}]"
+      },
+      {
+        "type": "uptime",
+        "key": "{#90}{$1}│ {#93}Uptime      {#90}│",
+        "format": "{$2}{$3}{?days}{days} Days + {?}{hours}:{minutes}:{seconds}"
+      },
+      {
+        "type": "cpu",
+        "key": "{#90}{$1}│ {#91}CPU         {#90}│",
+        "showPeCoreCount": true,
+        "temp": true,
+        "format": "{$2}{$3}{name}  {#2}[C:{core-types}] [{freq-max}] {temperature}"
+      },
+      {
+        "type": "memory",
+        "key": "{#90}{$1}│ {#91}Memory      {#90}│",
+        "format": "{$2}{$3}{used} / {total} ({percentage}{$2})"
+      },
+      {
+        "type": "disk",
+        "key": "{#90}{$1}│ {#91}Disk        {#90}│",
+        "format": "{$2}{$3}{size-used} / {size-total} ({size-percentage}{$2})"
+      },
+      {
+        "type": "terminal",
+        "key": "{#90}{$1}│ {#95}Terminal    {#90}│",
+        "format": "{$2}{$3}{pretty-name}  {#2}[{version}] [PID:{pid}]"
+      },
+      {
+        "type": "shell",
+        "key": "{#90}{$1}│ {#95}Shell       {#90}│",
+        "format": "{$2}{$3}{exe-path}  {#2}[v{version}] [PID:{pid}]"
+      },
+      {
+        "type": "editor",
+        "key": "{#90}{$1}│ {#95}Editor      {#90}│",
+        "format": "{$2}{$3}{path}  {#2}[v{version}]"
+      },
+      {
+        "type": "locale",
+        "key": "{#90}{$1}│ {#95}Locale      {#90}│",
+        "format": "{$2}{$3}{result}"
+      },
+      {
+        // localip IPv4
+        "type": "localip",
+        "key": "{#90}{$1}│ {#94}Local IPv4  {#90}│",
+        "showPrefixLen": true,
+        "showIpv4": true,
+        "showIpv6": false,
+        "showMtu": true,
+        "format": "{$2}{$3}{ifname}: {ipv4}  {#2}[MTU:{mtu}]"
+      },
+      {
+        // localip IPv6
+        "type": "localip",
+        "key": "{#90}{$1}│ {#94}Local IPv6  {#90}│",
+        "showPrefixLen": true,
+        "showIpv4": false,
+        "showIpv6": true,
+        "showMtu": true,
+        "format": "{$2}{$3}{ifname}: {ipv6}  {#2}[MTU:{mtu}]"
+      },
+      {
+        "type": "publicip",
+        "key": "{#90}{$1}│ {#94}Public IPv4 {#90}│",
+        "ipv6": false,
+        "format": "{$2}{$3}{ip}  {#2}[{location}]"
+      },
+      {
+        "type": "publicip",
+        "key": "{#90}{$1}│ {#94}Public IPv6 {#90}│",
+        "ipv6": true,
+        "format": "{$2}{$3}{ip}  {#2}[{location}]"
+      },
+      {
+        "type": "dns",
+        "key": "{#90}{$1}│ {#94}DNS         {#90}│",
+        "format": "{$2}{$3}{result}"
+      },
+      // CUSTOM - Button UI bar
+      {
+        "type": "custom",
+        "key": "{#90}{$1}╰─────────────╯",
+        "format": "{#90}{$2}╰────────────────────────────────────────────────────────────╯",
+      }
+    ]
+  }
