@@ -30,7 +30,7 @@ in {
 		chown ${username}:${group} ${home}/.config/neofetch
 		chmod 700 ${home}/.config/neofetch
 
-		cp ${./fastfetch/*.jsonc} ${home}/.config/fastfetch/
+		cp ${./fastfetch/*.jsonc} ${home}/.config/fastfetch
 		chown ${username}:${group} ${home}/.config/fastfetch/*.jsonc
 		chmod 600 ${home}/.config/fastfetch/*.jsonc
 
@@ -38,7 +38,7 @@ in {
 		chown ${username}:${group} ${home}/.config/fastfetch/gl.txt
 		chmod 600 ${home}/.config/fastfetch/gl.txt
 
-		cp ${./hyfetch/*.json} ${home}/.config/hyfetch/
+		cp ${./hyfetch/*.json} ${home}/.config/hyfetch
 		chown ${username}:${group} ${home}/.config/hyfetch/*.json
 		chmod 600 ${home}/.config/hyfetch/*.json
 		ln -sf ${home}/.config/hyfetch/fastfetch.json ${home}/.config/hyfetch.json
