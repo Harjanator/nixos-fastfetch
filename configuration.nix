@@ -30,7 +30,7 @@ in {
 		chown ${username}:${group} ${home}/.config/neofetch
 		chmod 700 ${home}/.config/neofetch
 
-		cp ${./fastfetch/*.jsonc} ${home}/.config/fastfetch
+		cp ${.fastfetch/*.jsonc} ${home}/.config/fastfetch/
 		chown ${username}:${group} ${home}/.config/fastfetch/*.jsonc
 		chmod 600 ${home}/.config/fastfetch/*.jsonc
 
