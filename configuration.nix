@@ -29,8 +29,9 @@ in {
 		mkdir ${home}/.config/neofetch
 		chown ${username}:${group} ${home}/.config/neofetch
 		chmod 700 ${home}/.config/neofetch
-
-		cp ${fastfetch/*.jsonc} ${home}/.config/fastfetch/
+		
+		cp ${./fastfetch_config.jsonc} ${home}/.config/fastfetch/fastfetch_config.jsonc
+		cp ${./fastfetch_gurulandia.jsonc} ${home}/.config/fastfetch/fastfetch_gurulandia.jsonc
 		chown ${username}:${group} ${home}/.config/fastfetch/*.jsonc
 		chmod 600 ${home}/.config/fastfetch/*.jsonc
 
