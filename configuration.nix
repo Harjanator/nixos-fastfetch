@@ -44,6 +44,7 @@ in {
 		chown ${username}:${group} ${home}/.config/hyfetch/*.json
 		chmod 600 ${home}/.config/hyfetch/*.json
 		ln -sf ${home}/.config/hyfetch/fastfetch.json ${home}/.config/hyfetch.json
+		chown ${username}:${group} ${home}/.config/hyfetch.json
 		chmod 600 ${home}/.config/hyfetch.json
 
 		cp ${./macchina.toml} ${home}/.config/macchina/macchina.toml
